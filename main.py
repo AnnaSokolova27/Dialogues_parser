@@ -15,7 +15,6 @@ farewellM = False
 dialogue = '0'
 newRow = []
 text = ''
-companyName = ''
 all=[]
 
 def goodManagerCheck(newRow, greetingM, farewellM, dialogue):
@@ -64,9 +63,7 @@ with open("test_data.csv", 'r+', encoding='utf-8') as file:
                         doc = nlp(row[3])
                         for word in doc:
                             if (str(word.head) == company and word.dep_ == 'appos'):
-                                print(word.text)
-                                #companyName = companyName + word.text
-                                text = text + 'word.text = ' + companyName + ' '
+                                text = text + 'companyName = ' + word.text + ' '
                 matches = extractor(row[3])
                 for match in matches:
                     if (match.fact.first is not None):
